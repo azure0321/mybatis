@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mybatis.mapper.BoardDao">
+    <select id="selectList" resultType="java.util.Map">
+        SELECT * FROM board
+    </select>
+    <select id="selectDetail" resultType="map">
+        SELECT title, content, writer, search_count, write_date
+        FROM board 
+        WHERE seq = #{seq}
+    </select>
+    <insert id="insertBoard">
+        INSERT board(title,content,writer,write_date) VALUES(#{title},#{content},#{writer},#{writeDate})
+    </insert>
+    <update id="updateBoard">
+        UPDATE board 
+        SET title = #{title},
+            content = #{content},
+            write_date = #{writeDate}
+        WHERE seq = #{seq}    
+    </update>
+</mapper>
+
+
+
+<!-- <mapper namespace="com.example.mybatis.mapper.DemoMapper">
+    <select id="select" resultType="java.util.Map">
+        SELECT * FROM demo 
+    </select>
+    <select id="selectById" resultType="java.util.Map">
+        SELECT * FROM demo WHERE seq = ${seq}
+    </select>
+    <insert id="insert">
+        INSERT INTO demo(seq,user) VALUES(${seq},#{user})
+    </insert>
+    <update id="update">
+        UPDATE demo SET user=#{user} where seq=#{seq}
+    </update>
+    <delete id="delete">
+        DELETE FROM demo WHERE seq=#{seq}
+    </delete>
+</mapper> -->
+<!-- <mapper namespace="com.example.mybatis.mapper.BoardMapper">
+    <select id="selectList" resultType="java.util.Map">
+        SELECT * FROM board
+    </select>
+</mapper> -->
